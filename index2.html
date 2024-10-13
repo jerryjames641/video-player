@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sequential Video Player</title>
+<style>
+body {
+  font-family: sans-serif;
+background-color: #000000;
+}
+.container {
+  width: 100%; /* Adjust as needed */
+  margin: 20px auto;
+  text-align: center;
+}
+video {
+  width: 100%;
+}
+.controls {
+  margin-top: 10px;
+}
+button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <video id="myVideo" controls></video>
+  <div class="controls">
+    <button id="prevBtn">Previous</button>
+    <button id="playPauseBtn">Play/Pause</button>
+    <button id="nextBtn">Next</button>
+  </div>
+</div>
+
+<script>
+const video = document.getElementById('myVideo');
+const prevBtn = document.getElementById('prevBtn');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+const videoSources = [
+  "video1.mp4",  // Replace with your video URLs
+  "video2.mp4",
+  "video3.mp4",
+  "video4.mp4",
+  "video5.mp4"
+];
+
+let currentVideoIndex = 0;
+
+function playVideo() {
+  video.src = videoSources[currentVideoIndex];
+  video.play();
+  playPauseBtn.textContent = "Pause";
+}
+
+function pauseVideo() {
+  video.pause();
+  playPauseBtn.textContent = "Play";
+}
+
+function nextVideo() {
+  currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+  playVideo();
+}
+
+function prevVideo() {
+  currentVideoIndex = (currentVideoIndex - 1 + videoSources.length) % videoSources.length;
+  playVideo();
+}
+
+video.addEventListener('ended', nextVideo);
+
+playPauseBtn.addEventListener('click', () => {
+  video.paused ? playVideo() : pauseVideo();
+});
+
+nextBtn.addEventListener('click', nextVideo);
+prevBtn.addEventListener('click', prevVideo);
+
+playVideo(); // Start playing the first video
+</script>
+
+</body>
+</html>
