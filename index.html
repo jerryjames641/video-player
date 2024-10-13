@@ -54,12 +54,12 @@ let currentVideoIndex = 0;
 function playVideo() {
   video.src = videoSources[currentVideoIndex];
   video.play();
-  playPauseBtn.textContent = "Pause";
+  playPauseBtn.textContent = "⏸️";
 }
 
 function pauseVideo() {
   video.pause();
-  playPauseBtn.textContent = "Play";
+  playPauseBtn.textContent = "▶️";
 }
 
 function nextVideo() {
