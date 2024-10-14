@@ -29,9 +29,9 @@ button {
 <div class="container">
   <video id="myVideo" controls></video>
   <div class="controls">
-    <button id="prevBtn">⏮</button>
-    <button id="playPauseBtn">▶/||</button>
-    <button id="nextBtn">⏭</button>
+    <button id="prevBtn">Previous</button>
+    <button id="playPauseBtn">Play/Pause</button>
+    <button id="nextBtn">Forward</button>
   </div>
 </div>
 
@@ -54,12 +54,12 @@ let currentVideoIndex = 0;
 function playVideo() {
   video.src = videoSources[currentVideoIndex];
   video.play();
-  playPauseBtn.textContent = "||";
+  playPauseBtn.textContent = "Pause";
 }
 
 function pauseVideo() {
   video.pause();
-  playPauseBtn.textContent = "▶";
+  playPauseBtn.textContent = "Play";
 }
 
 function nextVideo() {
